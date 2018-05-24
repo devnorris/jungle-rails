@@ -2,8 +2,13 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
+  resources :users, only: [:new, :create]
+  # resources :sessions, only: [:new, :create, :destroy]
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
+
+  get '/login' => 'sessions#new'
+  get '/logout' => 'sessions#destroy'
 
   resource :cart, only: [:show] do
     put    :add_item
