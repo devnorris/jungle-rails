@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
+  post '/login' => 'sessions#create'
 
   resource :cart, only: [:show] do
     put    :add_item
