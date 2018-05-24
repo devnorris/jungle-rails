@@ -4,9 +4,37 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+  <div class="panel panel-default items">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'line_item', collection: @line_items %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="2">
+            TOTAL:
+          </th>
+          <th>
+            <%= @order.total_cents %>
+          </th>
+          <th>
+
+          </th>
+        </tr>
+      </tfoot>
+    </table>
   </div>
+
+
+
+
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
