@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to :products
+      redirect_to products_path
     else
-      redirect_to :new
+      render :new
     end
   end
 
