@@ -4,6 +4,14 @@
     <h1>My Cart</h1>
   </header>
 
+  <% if cart == ({}) %>
+  <div class="notice">
+    <h2>Uh Oh! The cart seems to be empty!</h2>
+    <%= link_to "HomePage", root_path, class: 'btn btn-btn-primary' %>
+  </div>
+
+  <% else %>
+
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -33,6 +41,7 @@
     </table>
   </div>
 
+
   <div class="row">
     <div class="col-xs-12">
       <%= form_tag orders_path do %>
@@ -49,5 +58,7 @@
       <% end %>
     </div>
   </div>
+
+  <% end %>
 
 </section>
