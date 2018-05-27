@@ -2,11 +2,12 @@
 
       <div class="jumbotron">
         <div class="body">
-          <h4>Tell us what you think:</h4>
-          <p><%= review.description %></p>
+          <h4>Description:</h4>
+          <h><%= review.description %></p>
           <h4>Rating: <%= review.rating %> </h4>
-            <% if current_user.id === review.user_id %>
-                <%= link_to fa_icon('trash'), product_review_path(@product.id, review.id),
+            <% if !current_user %>
+            <% elsif current_user.id === review.user_id %>
+              <%= link_to fa_icon('trash'), product_review_path(@product.id, review.id),
                             method: :delete,
                             data: { confirm: 'Are you sure?' },
                             class: 'btn btn-danger btn-xs' %>
