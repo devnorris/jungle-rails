@@ -25,4 +25,12 @@
     <div class="sold-out">SOLD OUT!</div>
   <% end %>
 
+  <% product_reviews = product.reviews %>
+  <% product_ratings = [] %>
+  <% product_reviews.each do |review| %>
+  <% product_ratings.push(review.rating) %>
+  <% end %>
+  <% overall_rating = product_ratings.inject(:+) / product_ratings.length %>
+    <div class="rating"><strong>Rating:</strong> <%= overall_rating %></div>
+
 </article>

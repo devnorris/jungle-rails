@@ -12,10 +12,17 @@ class ReviewsController < ApplicationController
     if review.save
       redirect_to product_path(review.product)
     else
-      render product_path
+      redirect_to product_path(params[:product_id])
+    end
+  end
+
+    def destroy
+      @review_id = Review.find params[:id]
+      @product_id = params[:product_id]
+      @review_id.destroy
+      redirect_to product_path(:id, @product_id)
     end
 
-  end
 
   private
 

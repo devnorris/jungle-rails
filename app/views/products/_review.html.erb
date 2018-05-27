@@ -1,11 +1,15 @@
 <div class="row">
 
-      <div class="col-sm-8">
-        <dl class="dl-horizontal">
-          <dt>Review</dt>
-          <dd><%= review.description %>
-          <dt>Rating</dt>
-          <dd><%= review.rating %>
-        </dl>
+      <div class="jumbotron">
+        <div class="body">
+          <h4>Review</h4>
+          <p><%= review.description %></p>
+          <h4>Rating: <%= review.rating %> </h4>
+            <% if current_user.id === review.user_id %>
+                <%= link_to fa_icon('trash'), product_review_path(@product.id, review.id),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' },
+                            class: 'btn btn-danger btn-xs' %>
+            <% end %>
       </div>
     </div>
