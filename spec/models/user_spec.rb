@@ -64,4 +64,38 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe '#authenticate_with_credentials' do
+
+    subject { User.create(
+      first_name: 'Devon',
+      last_name: 'Norris',
+      email: 'devon@gmail.com',
+      password: 'lost123',
+      password_confirmation: 'lost123'
+    )}
+
+    it 'returns true if user was authinticated' do
+      subject.save
+      user = User.authenticate_with_credentials('devon@gmail.com', 'lost123')
+      expect(user).to be_truthy
+    end
+
+    it 'returns true if user email has whitespace around it' do
+      subject.save
+      user = User.authenticate_with_credentials(' devon@gmail.com ', 'lost123')
+      expect(user).to be_truthy
+    end
+
+    it 'returns true if user email has whitespace around it' do
+      subject.save
+      user = User.authenticate_with_credentials('DeVoN@gmAil.coM', 'lost123')
+      expect(user).to be_truthy
+    end
+
+  end
+
+
 end
+
+

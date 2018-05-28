@@ -6,9 +6,8 @@ class SessionsController < ApplicationController
 
   def create
 
-    @user = User.find_by_email(params[:email])
-
-    if @user && @user.authenticate(params[:password])
+    @user = User.authenticate_with_credentials(params[:email], params[:password])
+    if @user
       session[:user_id] = @user.id
       redirect_to products_path
     else
@@ -20,5 +19,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to :products
   end
+
+
 
 end
