@@ -68,7 +68,7 @@ RSpec.describe User, type: :model do
   describe '#authenticate_with_credentials' do
 
     subject { User.create(
-      first_name: 'Devon',
+      first_name: 'James',
       last_name: 'Norris',
       email: 'devon@gmail.com',
       password: 'lost123',
