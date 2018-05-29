@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def down_case
+    self.email.downcase
+  end
+
 end

@@ -29,8 +29,6 @@ class UsersController < ApplicationController
                                  )
   end
 
-  def down_case
-    self.email.downcase
-  end
+
 
 end
