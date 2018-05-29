@@ -30,7 +30,7 @@
   <% product_reviews.each do |review| %>
   <% product_ratings.push(review.rating) %>
   <% end %>
-  <% overall_rating = product_ratings.inject(:+) / product_ratings.length %>
+  <% overall_rating = product_ratings.inject(:+) / product_ratings.length unless product_ratings.empty? %>
     <div class="rating"><strong>Rating:</strong> <%= overall_rating %></div>
 
 </article>
